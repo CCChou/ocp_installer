@@ -2,11 +2,11 @@ tasks:
   - name: dns
   - name: load-balance
   - name: http-server
-  - name: ignition-file
+  - name: ocp-prepare
 env:
   dns: 8.8.8.8
-  pull-secret: /root/pull-secret
-  image-file: /root/rhcos.raw.gz
+  pull-secret-dir: /root/pull-secret
+  image-file-dir: /root/rhcos.raw.gz
   cluster-name: ibm
   base-domain: cp.example
 nodes:
