@@ -1,0 +1,30 @@
+tasks:
+  - name: dns
+  - name: load-balance
+  - name: http-server
+  - name: ignition-file
+env:
+  dns: 8.8.8.8
+  pull-secret: /root/pull-secret
+  image-file: /root/rhcos.raw.gz
+  cluster-name: ibm
+  base-domain: cp.example
+nodes:
+  bastion:
+    - name: bastion
+      ip: 10.9.42.31
+  bootstrap:
+    - name: bootstrap
+      ip: 10.9.42.32
+  master:
+    - name: master1
+      ip: 10.9.42.33
+    - name: master2
+      ip: 10.9.42.34
+    - name: master3
+      ip: 10.9.42.35
+  worker:
+    - name: infra
+      ip: 10.9.42.36
+    - name: worker
+      ip: 10.9.42.37
