@@ -20,8 +20,8 @@ class ConfigParserTest(unittest.TestCase):
         assert tasks[2].name == 'http-server'
         assert tasks[3].name == 'ocp-prepare'
 
-    def test_parse_env_vars(self):
-        env = self.__parser.parse_env_vars(self.__data)
+    def test_parse_env(self):
+        env = self.__parser.parse_env(self.__data)
         assert env.dns == '8.8.8.8'
         assert env.pull_secret_dir == '/root/pull-secret'
         assert env.image_file_dir == '/root/rhcos.raw.gz'

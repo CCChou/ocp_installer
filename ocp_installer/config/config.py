@@ -1,7 +1,7 @@
 class Config:
-    def __init__(self, tasks, env_vars, nodes):
+    def __init__(self, tasks, env, nodes):
         self.__tasks = tasks
-        self.__env_vars = env_vars
+        self.__env = env
         self.__nodes = nodes
 
     @property 
@@ -9,8 +9,8 @@ class Config:
         return self.__tasks
 
     @property
-    def env_vars(self):
-        return self.__env_vars
+    def env(self):
+        return self.__env
         
     @property
     def nodes(self):

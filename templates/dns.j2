@@ -1,0 +1,44 @@
+domain={{ config.env.cluster_name }}.{{ config.env.base_domain }},{{ ip_range }},local
+server={{ config.env.dns }}
+
+{% for node in config.nodes -%}
+host-record={{ node.name }}.{{ config.env.cluster_name }}.{{ config.env.base_domain }},{{ node.ip }}
+{% if node.role == 'bastion' -%}
+host-record=api.{{ config.env.cluster_name }}.{{ config.env.base_domain }},{{ node.ip }}
+host-record=api-int.{{ config.env.cluster_name }}.{{ config.env.base_domain }},{{ node.ip }}
+{% endif -%}
+{% endfor -%}
+
+{% set count = namespace(value=0) -%}
+{% for node in config.nodes -%}
+{% if node.role == 'master' -%}
+host-record=etcd-{{ count.value }}.{{ config.env.cluster_name }}.{{ config.env.base_domain }},{{ node.ip }}
+{% set count.value = count.value + 1 -%}
+{% endif -%}
+{% endfor -%}
+
+{% set count = namespace(value=0) -%}
+{% for node in config.nodes -%}
+{% if node.role == 'master' -%}
+srv-host=_etcd-server-ssl._tcp.ibm.cp.example,etcd-{{ count.value }}.{{ config.env.cluster_name }}.{{ config.env.base_domain }},2380,0,10
+{% set count.value = count.value + 1 -%}
+{% endif -%}
+{% endfor -%}
+
+{% for node in config.nodes -%}
+address=/{{ node.name }}.{{ config.env.cluster_name }}.{{ config.env.base_domain }}/{{ node.ip }}
+{% if node.role == 'bastion' -%}
+address=/apps.{{ config.env.cluster_name }}.{{ config.env.base_domain }}/{{ node.ip }}
+address=/.apps.{{ config.env.cluster_name }}.{{ config.env.base_domain }}/{{ node.ip }}
+address=/api.{{ config.env.cluster_name }}.{{ config.env.base_domain }}/{{ node.ip }}
+address=/api-int.{{ config.env.cluster_name }}.{{ config.env.base_domain }}/{{ node.ip }}
+{% endif -%}
+{% endfor -%}
+
+{% set count = namespace(value=0) -%}
+{% for node in config.nodes -%}
+{% if node.role == 'master' -%}
+address=/etcd-{{ count.value }}.{{ config.env.cluster_name }}.{{ config.env.base_domain }}/{{ node.ip }}
+{% set count.value = count.value + 1 -%}
+{% endif -%}
+{% endfor -%}

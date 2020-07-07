@@ -1,10 +1,12 @@
 class Env:
-    def __init__(self, dns, pull_secret_dir, image_file_dir, cluster_name, base_domain):
+    def __init__(self, dns, pull_secret_dir, image_file_dir, cluster_name, base_domain, ocp_client_dir, ocp_installer_dir):
         self.__dns = dns
         self.__pull_secret_dir = pull_secret_dir
         self.__image_file_dir = image_file_dir
         self.__cluster_name = cluster_name
         self.__base_domain = base_domain
+        self.__ocp_client_dir = ocp_client_dir
+        self.__ocp_installer_dir = ocp_installer_dir
 
     @property
     def dns(self):

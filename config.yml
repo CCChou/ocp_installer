@@ -9,6 +9,8 @@ env:
   image-file-dir: /root/rhcos.raw.gz
   cluster-name: ibm
   base-domain: cp.example
+  ocp-client-dir: /root/...
+  ocp-installer-dir: /root/...
 nodes:
   bastion:
     - name: bastion
