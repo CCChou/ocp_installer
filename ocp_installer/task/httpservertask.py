@@ -1,9 +1,10 @@
+from ocp_installer.config.config import Config
 from ocp_installer.task.task import Task
 import ocp_installer.task.utils as utils
 
 
 class HttpServerTask(Task):
-    def exec(self):
+    def exec(self, config: Config):
         service_name = 'httpd'
         utils.install_pkg(service_name)
         self.__change_listen_port()

@@ -6,7 +6,7 @@ from ocp_installer.task.task import Task
 import ocp_installer.task.utils as utils
 
 
-class LoadBalancerTask(Task):
+class LoadBalanceTask(Task):
     def exec(self, config: Config):
         service_name = 'haproxy'
         utils.install_pkg(service_name)
