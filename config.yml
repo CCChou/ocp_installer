@@ -1,8 +1,8 @@
 tasks:
-  - name: dns
-  - name: load-balance
-  - name: http-server
-  - name: ocp-prepare
+  - name: DNS
+  - name: LoadBalance
+  - name: HttpServer
+  - name: OCP
 env:
   dns: 8.8.8.8
   pull-secret-dir: /root/pull-secret

@@ -6,6 +6,7 @@ from ocp_installer.config.node import Node
 
 class ConfigParser:
     def parse(self, yaml_config: dict):
+        print('start parse')
         tasks = self.parse_tasks(yaml_config)
         env_vars = self.parse_env(yaml_config)
         nodes = self.parse_nodes(yaml_config)
