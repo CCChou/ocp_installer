@@ -11,6 +11,7 @@ env:
   base-domain: cp.example
   ocp-client-dir: /root/...
   ocp-installer-dir: /root/...
+  node-ip-range: 10.9.42.0/24
 nodes:
   bastion:
     - name: bastion

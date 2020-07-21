@@ -17,7 +17,7 @@ class ConfigParser:
 
     def parse_env(self, yaml_config: dict):
         env = yaml_config['env']
-        return Env(env['dns'], env['pull-secret-dir'], env['image-file-dir'], env['cluster-name'], env['base-domain'], env['ocp-client-dir'], env['ocp-installer-dir'])
+        return Env(env['dns'], env['pull-secret-dir'], env['image-file-dir'], env['cluster-name'], env['base-domain'], env['ocp-client-dir'], env['ocp-installer-dir'], env['node-ip-range'])
 
     def parse_nodes(self, yaml_config: dict):
         nodes = []

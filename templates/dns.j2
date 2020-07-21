@@ -1,4 +1,4 @@
-domain={{ config.env.cluster_name }}.{{ config.env.base_domain }},{{ ip_range }},local
+domain={{ config.env.cluster_name }}.{{ config.env.base_domain }},{{ config.env.node_ip_range }},local
 server={{ config.env.dns }}
 
 {% for node in config.nodes -%}
