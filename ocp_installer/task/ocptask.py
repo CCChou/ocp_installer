@@ -13,7 +13,7 @@ class OCPTask(Task):
         self.__install_dir = '~/ocp4'
 
     def exec(self, config: Config):
-        utils.exec_command('ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y 2>&1 >/dev/null')
+        utils.exec_command("ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y 2>&1 >/dev/null")
         utils.exec_command(f'tar zxvf {config.env} -C /usr/local/bin/')
         utils.exec_command(f'tar zxvf {config.env} -C /usr/local/bin/')
         self.__generate_config(config)
